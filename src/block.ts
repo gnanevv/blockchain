@@ -1,9 +1,11 @@
+import { TransactionData } from "./transaction";
+
 interface BlockData {
     index: number;
     hash: string;
     previousHash: string;
     nonce: number;
-    transactions: any[];
+    transactions: TransactionData[];
     key: string;
 };
 
@@ -13,9 +15,12 @@ export default class Block implements BlockData{
         public hash: string = '',
         public previousHash: string = '',
         public nonce: number = 0,
-        public transactions: any[] = []
+        public transactions: TransactionData[] = []
     ) {}
     get key(): string {
         return JSON.stringify(this.transactions) + this.index + this.previousHash + this.nonce;
+    }
+    public addTransaction( transaction: TransactionData): void {
+        this.transactions = [...this.transactions , transaction];
     }
 }
