@@ -1,6 +1,6 @@
 import { TransactionData } from "./transaction";
 
-interface BlockData {
+export interface BlockData {
     index: number;
     hash: string;
     previousHash: string;
